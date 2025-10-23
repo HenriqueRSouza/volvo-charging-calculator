@@ -15,34 +15,39 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     permissions:
+      id-token: write
       contents: read
-
-    # 🔹 Variáveis de ambiente que serão injetadas no build do Vite
-    env:
-      VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
-      VITE_API_URL: ${{ secrets.VITE_API_URL }}
-
     steps:
-      # 1️⃣ Clonar repositório
       - uses: actions/checkout@v3
+        with:
+          submodules: true
+          lfs: false
 
-      # 2️⃣ Instalar dependências
-      - name: Install dependencies
-        run: npm ci
+      - name: Install OIDC Client from Core Package
+        run: npm install @actions/core@1.6.0 @actions/http-client
 
-      # 3️⃣ Build do app Vite + React
-      - name: Build app
-        run: npm run build
+      - name: Get Id Token
+        uses: actions/github-script@v6
+        id: idtoken
+        with:
+          script: |
+            const coredemo = require('@actions/core')
+            return await coredemo.getIDToken()
+          result-encoding: string
 
-      # 4️⃣ Deploy para Azure Static Web Apps usando Deployment Token
-      - name: Deploy to Azure Static Web Apps
-        id: swa
+      - name: Build And Deploy
+        id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_TOKEN }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GRAY_CLIFF_0EA85E90F }}
           action: "upload"
-          app_location: "/"           # Diretório do código-fonte
-          output_location: "dist"     # Diretório de build do Vite
+          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "/" # App source code path
+          api_location: "" # Api source code path - optional
+          output_location: "dist" # Built app content directory - optional
+          github_id_token: ${{ steps.idtoken.outputs.result }}
+          ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -50,6 +55,7 @@ jobs:
     name: Close Pull Request Job
     steps:
       - name: Close Pull Request
+        id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
           action: "close"
