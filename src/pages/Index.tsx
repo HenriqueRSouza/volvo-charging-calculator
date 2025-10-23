@@ -7,6 +7,7 @@ import { PricingConfiguration } from '@/components/steps/PricingConfiguration';
 import { ResultsView } from '@/components/steps/ResultsView';
 import { VolvoVehicle } from '@/data/volvoVehicles';
 import { CompetitorVehicle } from '@/data/competitorVehicles';
+import logoVolvo from '@/assets/volvo-logo.png';
 
 export type Step = 'vehicle' | 'competitor' | 'usage' | 'pricing' | 'results';
 
@@ -51,9 +52,9 @@ const Index = () => {
           {/* Grupo logo + título */}
           <div className="flex items-center gap-3">
             <img
-              src="/src/assets/volvo-logo.png"
+              src={logoVolvo}
               alt="Volvo Logo"
-              className="w-10 h-10 object-contain"
+              className="w-10 h-10"
             />
             <h1 className="text-3xl font-bold text-primary-foreground tracking-wide">
               VOLVO HOME CHARGING
