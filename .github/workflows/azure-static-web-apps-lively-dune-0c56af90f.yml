@@ -28,12 +28,7 @@ jobs:
 
       # 🔒 Build com variável sensível vinda do GitHub Secret (não será exposta ao frontend)
       - name: Build app
-        run: |
-          VITE_API_KEY=${{ secrets.VITE_API_KEY }} \
-          VITE_API_URL=${{ secrets.VITE_API_URL }} \
-          VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }} \
-          VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }} \
-          npm run build
+        run: npm run build
 
       - name: Deploy to Azure Static Web Apps
         id: builddeploy
@@ -55,4 +50,5 @@ jobs:
         uses: Azure/static-web-apps-deploy@v1
         with:
           action: "close"
+
 
