@@ -5,7 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => {
   // 🔹 Carrega variáveis de ambiente do sistema e do .env.*
-  const env = loadEnv(mode, process.cwd(), "");
+  const env = process.env;
+// Para Azure Static Web Apps, as variáveis de ambiente são injetadas automaticamente durante o build
 
   return {
     server: {
@@ -22,6 +23,8 @@ export default defineConfig(({ mode }) => {
       // 🔹 Injeta as variáveis no build
       "import.meta.env.VITE_API_URL": JSON.stringify(env.VITE_API_URL),
       "import.meta.env.VITE_API_KEY": JSON.stringify(env.VITE_API_KEY),
+      "import.meta.env.VITE_SUPABASE_URL": JSON.stringify(env.VITE_SUPABASE_URL),
+      "import.meta.env.VITE_SUPABASE_ANON_KEY": JSON.stringify(env.VITE_SUPABASE_ANON_KEY),
     },
   };
 });
