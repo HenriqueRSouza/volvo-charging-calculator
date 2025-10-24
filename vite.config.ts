@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => {
   // 🔹 Carrega variáveis de ambiente do sistema e do .env.*
-  const env = process.env;
+  const env = loadEnv(mode, process.cwd(), "");
 // Para Azure Static Web Apps, as variáveis de ambiente são injetadas automaticamente durante o build
 
   return {
