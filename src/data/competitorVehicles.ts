@@ -53,7 +53,7 @@ export async function fetchCompetitorVehicles(): Promise<CompetitorVehicle[]> {
       modelo: vehicle.modelo || vehicle.Modelo || vehicle.model,
       kmLCidade: vehicle.km_l_cidade || vehicle.kmLCidade || vehicle.km_l_city || vehicle.city_km_l || vehicle.cidade,
       kmLEstrada: vehicle.km_l_estrada || vehicle.kmLEstrada || vehicle.km_l_highway || vehicle.highway_km_l || vehicle.estrada,
-      tipoCombustivel: vehicle.tipo_combustivel || vehicle.tipoCombustivel || vehicle.fuel_type || vehicle.combustivel,
+      tipoCombustivel: vehicle.tipo || vehicle.tipo_combustivel || vehicle.tipoCombustivel || vehicle.fuel_type || vehicle.combustivel,
     }));
 
     console.log('✅ Dados processados:', mappedData);
