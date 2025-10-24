@@ -7,11 +7,15 @@ export function ButtonDownload() {
   const handleDownloadPDF = async () => {
     try {
       const element = document.getElementById("results-container");
+      const buttonSection = document.querySelector("#results-container .flex.items-center.gap-4.mb-8");
 
       if (!element) {
         alert("Erro: container de resultados não encontrado (id='results-container').");
         return;
       }
+
+      // Oculta os botões antes de capturar
+      if (buttonSection) (buttonSection as HTMLElement).style.display = 'none';
 
       console.log("📸 Gerando imagem com html2canvas...");
       const canvas = await html2canvas(element, {
@@ -42,6 +46,9 @@ export function ButtonDownload() {
 
       pdf.save("comparativo-volvo.pdf");
       console.log("✅ PDF gerado com sucesso.");
+
+      // Exibe novamente os botões após capturar
+      if (buttonSection) (buttonSection as HTMLElement).style.display = '';
     } catch (error) {
       console.error("❌ Erro ao gerar PDF:", error);
       alert("Erro ao gerar PDF. Veja o console para mais detalhes.");
