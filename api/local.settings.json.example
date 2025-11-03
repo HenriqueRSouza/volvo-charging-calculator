@@ -1,0 +1,15 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "SUPABASE_URL": "https://seu-projeto.supabase.co",
+    "SUPABASE_ANON_KEY": "sua-chave-anonima-do-supabase",
+    "SUPABASE_TABLE_NAME": "inmetro_database"
+  },
+  "Host": {
+    "LocalHttpPort": 7071,
+    "CORS": "*"
+  }
+}
+

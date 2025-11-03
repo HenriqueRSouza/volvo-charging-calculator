@@ -1,0 +1,23 @@
+# Azure Functions artifacts
+bin
+obj
+appsettings.json
+local.settings.json
+*.user
+*.suo
+*.cache
+
+# Azure Functions Core Tools
+.func
+
+# Node modules
+node_modules
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+

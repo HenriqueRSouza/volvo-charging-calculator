@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => {
       // 🔹 Injeta as variáveis no build
       "import.meta.env.VITE_API_URL": JSON.stringify(env.VITE_API_URL),
       "import.meta.env.VITE_API_KEY": JSON.stringify(env.VITE_API_KEY),
+      "import.meta.env.VITE_API_BACKEND_URL": JSON.stringify(env.VITE_API_BACKEND_URL),
       "import.meta.env.VITE_SUPABASE_URL": JSON.stringify(env.VITE_SUPABASE_URL),
       "import.meta.env.VITE_SUPABASE_ANON_KEY": JSON.stringify(env.VITE_SUPABASE_ANON_KEY),
     },
