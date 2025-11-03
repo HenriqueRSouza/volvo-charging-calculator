@@ -7,19 +7,19 @@ export interface CompetitorVehicle {
 }
 
 /**
- * Função para buscar dados de veículos competidores via backend API
+ * Função para buscar dados de veículos competidores via backend Express
  * 
- * Esta função consome a API Azure Function que atua como proxy seguro,
+ * Esta função consome a API Express que atua como proxy seguro,
  * protegendo as credenciais do Supabase no backend.
  * 
  * Variáveis de ambiente esperadas:
- *  - VITE_API_BACKEND_URL: URL da Azure Function (ex: https://api-volvo-homecharge.azurewebsites.net/api)
- *  - Para desenvolvimento local: http://localhost:7071/api
+ *  - VITE_API_BACKEND_URL: URL do backend Express (opcional)
+ *  - Para desenvolvimento local: http://localhost:5000
  */
 export async function fetchCompetitorVehicles(): Promise<CompetitorVehicle[]> {
-  // Usar URL do backend Azure Function ou local para desenvolvimento
-  const backendUrl = import.meta.env.VITE_API_BACKEND_URL || 'http://localhost:7071/api';
-  const apiUrl = `${backendUrl}/GetCompetitorVehicles`;
+  // Usar URL do backend Express ou variável de ambiente
+  const backendUrl = import.meta.env.VITE_API_BACKEND_URL || 'http://localhost:5000';
+  const apiUrl = `${backendUrl}/api/dados`;
 
   try {
     console.log('🔗 Buscando dados da API backend...');

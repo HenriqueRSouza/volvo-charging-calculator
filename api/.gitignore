@@ -1,21 +1,5 @@
-# Azure Functions artifacts
-bin
-obj
-*.user
-*.suo
-*.cache
-
-# Azure Functions Core Tools
-.func
-
-# Node modules
 node_modules
-
-# Logs
+.env
 *.log
-npm-debug.log*
-
-# OS files
 .DS_Store
-Thumbs.db
 

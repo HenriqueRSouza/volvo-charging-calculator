@@ -1,9 +1,0 @@
-__blobstorage__
-__queuestorage__
-__azurite_db*__.json
-.azure/
-.vscode/
-node_modules/
-.local.settings.json
-local.settings.json
-
