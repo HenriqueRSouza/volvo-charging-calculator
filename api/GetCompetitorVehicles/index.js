@@ -52,7 +52,4 @@ app.post("/api/clientes", async (req, res) => {
     console.error("Erro ao inserir:", err.message);
     res.status(500).json({ erro: err.message });
   }
-});
-
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`🚀 Servidor rodando na porta ${PORT}`));
+};
