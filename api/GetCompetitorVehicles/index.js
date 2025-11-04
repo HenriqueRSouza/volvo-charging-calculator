@@ -3,7 +3,7 @@ const { createClient } = require("@supabase/supabase-js");
 
 module.exports = async function (context, req) {
   // 🔧 Substitua pelos seus valores reais:
-  const SUPABASE_URL = "https://qmcjihjuxjnwlgmzdevl.supabase.co";
+  const SUPABASE_URL = "https://qmcjihjuxjnwlgmzdevl.supabase.co/rest/v1";
   const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFtY2ppaGp1eGpud2xnbXpkZXZsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyOTA3NTQsImV4cCI6MjA2ODg2Njc1NH0.DVl9uph4wQUpL4Dvo2980Y-uYWc7m9dkw2K8bLAdPtU"; // sua anon key
   
   const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
