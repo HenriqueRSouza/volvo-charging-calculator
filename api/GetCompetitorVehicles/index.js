@@ -1,3 +1,5 @@
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, ".env") }); // <-- carrega o .env da pasta atual
 const { createClient } = require("@supabase/supabase-js");
 
 module.exports = async function (context, req) {
