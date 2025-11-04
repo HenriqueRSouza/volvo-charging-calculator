@@ -18,8 +18,8 @@ export interface CompetitorVehicle {
  */
 export async function fetchCompetitorVehicles(): Promise<CompetitorVehicle[]> {
   // Usar URL do backend Express ou variável de ambiente
-  const backendUrl = import.meta.env.VITE_API_BACKEND_URL || 'https://icy-field-0a4fde21e.3.azurestaticapps.net';
-  const apiUrl = `${backendUrl}/api/dados`;
+  const backendUrl = 'https://icy-field-0a4fde21e.3.azurestaticapps.net';
+  const apiUrl = `${backendUrl}/api/GetCompetitorVehicles`;
 
   try {
     console.log('🔗 Buscando dados da API backend...');
