@@ -8,6 +8,8 @@ module.exports = async function (context, req) {
   
   const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+// Exemplo de rota GET para buscar dados do Supabase
+app.get("/api/clientes", async (req, res) => {
   try {
     if (req.method === "GET") {
       // Busca todos os registros
@@ -34,4 +36,23 @@ module.exports = async function (context, req) {
     context.log("Erro na função:", error.message);
     context.res = { status: 500, body: { error: error.message } };
   }
-};
+});
+
+// Exemplo de rota POST para inserir dados
+app.post("/api/clientes", async (req, res) => {
+  try {
+    const { nome, email } = req.body;
+    const { data, error } = await supabase
+      .from("inmetro_database")
+      .insert([{ nome, email }])
+      .select();
+    if (error) throw error;
+    res.json(data);
+  } catch (err) {
+    console.error("Erro ao inserir:", err.message);
+    res.status(500).json({ erro: err.message });
+  }
+});
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => console.log(`🚀 Servidor rodando na porta ${PORT}`));
