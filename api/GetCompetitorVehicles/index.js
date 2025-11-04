@@ -52,4 +52,9 @@ app.post("/api/clientes", async (req, res) => {
     console.error("Erro ao inserir:", err.message);
     res.status(500).json({ erro: err.message });
   }
-};
+
+  context.res = {
+    status: 200,
+    body: data,
+  };
+}
